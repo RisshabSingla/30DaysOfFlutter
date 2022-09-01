@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // home: LoginPage(),
+      home: LoginPage(),
       //--> only one can be given either this or / address
       // home: HomePage(),
 
@@ -30,8 +30,7 @@ class MyApp extends StatelessWidget {
 
       // initialRoute: "/login", // --> initial opening page
       routes: {
-        "/": (context) =>
-            const HomePage(), // --> not required since HomePage not given
+        // "/": (context) => const HomePage(), // --> not required since HomePage not given
         MyRoutes.homeRoute: (context) => HomePage(),
         MyRoutes.loginRoute: (context) => LoginPage(),
       },
