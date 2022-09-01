@@ -9,8 +9,6 @@ import '../widgets/drawer.dart';
 import '../widgets/item_widget.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -24,32 +22,42 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    final catalogJson = await rootBundle.loadString("assets/files/catalog.json");
+    await Future.delayed(Duration(seconds: 2));
+    final catalogJson =
+        await rootBundle.loadString("assets/files/catalog.json");
     final decodeJson = jsonDecode(catalogJson); // gives a map
-    // print(catalogJson);
-    var productData = decodeJson["products"];
+    // print(decodeJson);
 
+    await Future.delayed(Duration(milliseconds: 2));
+
+    var productData = decodeJson["products"];
+    // print(productData);
+
+    await Future.delayed(Duration(milliseconds: 2));
+    CatalogModel.items =
+        List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    final dummyList = List.generate(20, (index) => CatalogModel.items[0]);
+    // final dummyList = List.generate(20, (index) => CatalogModel.items[0]);
     // generates a dummy list in order to compensate for lack of data
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Catalog App",
+        title: const Text("Catalog App",
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-            itemCount: dummyList.length, //CatalogModel.items.length,
+        child: (CatalogModel.items !=null && CatalogModel.items.isNotEmpty)? ListView.builder(
+            itemCount: CatalogModel.items.length, //CatalogModel.items.length,
             itemBuilder: (context, index) {
               return ItemWidget(
-                  item: dummyList[index] //CatalogModel.items[index]
+                  item: CatalogModel.items[index] //CatalogModel.items[index]
                   );
-            }),
+            },
+        ):Center(child: CircularProgressIndicator()),
       ),
       drawer: myDrawer(),
     );
