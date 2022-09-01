@@ -14,23 +14,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginPage(),
-      //--> only one can be given either this or / address
-      // home: HomePage(),
-
+      // home: LoginPage(),
       themeMode: ThemeMode.light,
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
         fontFamily: GoogleFonts.lato().fontFamily,
-        // primaryTextTheme: GoogleFonts.latoTextTheme(),  --> Applicable only to primary text fields
       ),
-      // themeMode: ThemeMode.dark    --> can be used to give dark theme
-      // darkTheme: ThemeData(
-      //   brightness: Brightness.dark,
-
-      // initialRoute: "/login", // --> initial opening page
+      debugShowCheckedModeBanner: false,
+      initialRoute: MyRoutes.homeRoute, // --> initial opening page
       routes: {
-        // "/": (context) => const HomePage(), // --> not required since HomePage not given
+        "/": (context) => HomePage(),
+        // --> not required since HomePage not given
         MyRoutes.homeRoute: (context) => HomePage(),
         MyRoutes.loginRoute: (context) => LoginPage(),
       },
