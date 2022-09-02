@@ -18,9 +18,8 @@ class CatalogItem extends StatelessWidget {
         child: Row(
       children: [
         Hero(
-          tag: Key(catalog.id.toString()) ,
-            child: CatalogImage(image: catalog.image)
-        ),
+            tag: Key(catalog.id.toString()),
+            child: CatalogImage(image: catalog.image)),
         Expanded(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +32,7 @@ class CatalogItem extends StatelessWidget {
               alignment: MainAxisAlignment.spaceBetween,
               buttonPadding: EdgeInsets.zero,
               children: [
-                "\$${catalog.price}".text.bold.xl.make(),
+                "\$${catalog.price}".text.xl.bold.make(),
                 ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
@@ -41,9 +40,9 @@ class CatalogItem extends StatelessWidget {
                           MaterialStateProperty.all(MyTheme.darkBluish),
                       shape: MaterialStateProperty.all(StadiumBorder()),
                     ),
-                    child: "Buy".text.make())
+                    child: "Add to Cart".text.make())
               ],
-            ).pOnly(right: 16)
+            ).pOnly(right: 12)
           ],
         ))
       ],

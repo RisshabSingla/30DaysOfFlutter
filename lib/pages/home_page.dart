@@ -1,5 +1,7 @@
 import 'package:android_studio_projects/models/catalog.dart';
+import 'package:android_studio_projects/utils/routes.dart';
 import 'package:android_studio_projects/widgets/themes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import "package:velocity_x/velocity_x.dart";
@@ -45,10 +47,15 @@ class _HomePageState extends State<HomePage> {
     // final dummyList = List.generate(20, (index) => CatalogModel.items[0]);
     // generates a dummy list in order to compensate for lack of data
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: ()  => Navigator.pushNamed(context, MyRoutes.cartRoute),
+        backgroundColor: MyTheme.darkBluish,
+        child: Icon(CupertinoIcons.cart),
+      ),
         backgroundColor: MyTheme.creamColor,
         body: SafeArea(
           child: Container(
-            padding: Vx.m32, // similar to EdgeInserts.all(32.0),
+            padding: Vx.m16, // similar to EdgeInserts.all(32.0),
             child: Column(
               children: [
                 CatalogHeader(),

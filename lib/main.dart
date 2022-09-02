@@ -1,3 +1,4 @@
+import 'package:android_studio_projects/pages/cart_page.dart';
 import 'package:android_studio_projects/pages/home_page.dart';
 import 'package:android_studio_projects/pages/login_page.dart';
 import 'package:android_studio_projects/utils/routes.dart';
@@ -23,6 +24,8 @@ class MyApp extends StatelessWidget {
         "/": (context) => HomePage(),
         MyRoutes.homeRoute: (context) => HomePage(),
         MyRoutes.loginRoute: (context) => LoginPage(),
+        MyRoutes.cartRoute: (context) => CartPage(),
+
       },
     );
   }
