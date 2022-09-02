@@ -11,14 +11,20 @@ import 'package:google_fonts/google_fonts.dart';
           titleTextStyle: TextStyle(
             color: Colors.black,
             fontSize: 18,
-            fontFamily: GoogleFonts.lato().fontFamily,
+            fontFamily: GoogleFonts.poppins().fontFamily,
           ),
         ),
-        fontFamily: GoogleFonts.lato().fontFamily,
+        fontFamily: GoogleFonts.poppins().fontFamily,
       );
 
    static ThemeData get darkTheme => ThemeData(
      brightness: Brightness.dark,
    );
+
+   //Colors
+  static Color creamColor = const Color(0xfff5f5f5);
+  static Color darkBluish = const Color(0xff403b58);
+
+
 
 }
