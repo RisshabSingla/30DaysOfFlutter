@@ -1,5 +1,6 @@
 import 'package:android_studio_projects/utils/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -34,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.white,
+        color: context.canvasColor,
         child: SingleChildScrollView(
           // Inorder to scroll if size is too big for screen
           child: Form(
@@ -95,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Material(
                         //Whenever an ancestor is given, the child should not have any decoration
-                        color: Colors.deepPurple,
+                        color: context.theme.buttonColor,
                         borderRadius:
                             BorderRadius.circular(changeButton ? 50 : 8),
                         child: InkWell(
