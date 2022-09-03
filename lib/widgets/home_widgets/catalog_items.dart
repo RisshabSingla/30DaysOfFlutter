@@ -1,9 +1,7 @@
-import 'package:android_studio_projects/models/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../models/catalog.dart';
-import '../../widgets/themes.dart';
 import 'catalog_image.dart';
 import '../../widgets/home_widgets/add_to_cart.dart';
 

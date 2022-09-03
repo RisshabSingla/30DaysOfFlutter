@@ -1,14 +1,6 @@
 import 'package:android_studio_projects/models/catalog.dart';
-import 'package:flutter/material.dart';
 
 class CartModel {
-
-
-  // called a singleton class
-  static final cartModel = CartModel._internal();
-  CartModel._internal();
-  factory CartModel() => cartModel;
-
   //catalog field
   late CatalogModel _catalog;
 
