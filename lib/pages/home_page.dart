@@ -7,9 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import "package:velocity_x/velocity_x.dart";
 import 'dart:convert';
-
 import '../widgets/home_widgets/catalog_header.dart';
 import '../widgets/home_widgets/catalog_list.dart';
+
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,24 +20,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    // before the builder
     super.initState();
     loadData();
   }
 
   loadData() async {
-    await Future.delayed(Duration(seconds: 2));
     final catalogJson =
         await rootBundle.loadString("assets/files/catalog.json");
-    final decodeJson = jsonDecode(catalogJson); // gives a map
-    // print(decodeJson);
 
-    await Future.delayed(Duration(milliseconds: 2));
+    final decodeJson = jsonDecode(catalogJson); // gives a map
+
+    await Future.delayed(Duration(microseconds: 2));
 
     var productData = decodeJson["products"];
-    // print(productData);
 
-    await Future.delayed(Duration(milliseconds: 2));
+    await Future.delayed(Duration(microseconds: 2));
     CatalogModel.items =
         List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
     setState(() {});
