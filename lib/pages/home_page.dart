@@ -1,3 +1,5 @@
+import 'package:android_studio_projects/core/store.dart';
+import 'package:android_studio_projects/models/cart.dart';
 import 'package:android_studio_projects/models/catalog.dart';
 import 'package:android_studio_projects/utils/routes.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +10,6 @@ import 'dart:convert';
 
 import '../widgets/home_widgets/catalog_header.dart';
 import '../widgets/home_widgets/catalog_list.dart';
-
 
 class HomePage extends StatefulWidget {
   @override
@@ -43,14 +44,16 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // final dummyList = List.generate(20, (index) => CatalogModel.items[0]);
-    // generates a dummy list in order to compensate for lack of data
+    final cart = (VxState.store as MyStore).cart;
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: ()  => Navigator.pushNamed(context, MyRoutes.cartRoute),
-        backgroundColor: context.theme.buttonColor,
-        child: Icon(CupertinoIcons.cart, color: Colors.white),
-      ),
+        floatingActionButton: VxBuilder(
+            mutations: {AddMutation, RemoveMutation},
+            builder: (context, store, status) => FloatingActionButton(
+                  onPressed: () =>
+                      Navigator.pushNamed(context, MyRoutes.cartRoute),
+                  backgroundColor: context.theme.buttonColor,
+                  child: Icon(CupertinoIcons.cart, color: Colors.white),
+                ).badge(color: Vx.red600, size: 20, count: cart.items.length)),
         backgroundColor: context.canvasColor,
         body: SafeArea(
           child: Container(
