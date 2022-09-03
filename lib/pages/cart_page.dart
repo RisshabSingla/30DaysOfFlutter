@@ -1,3 +1,4 @@
+import 'package:android_studio_projects/core/store.dart';
 import 'package:android_studio_projects/models/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -24,7 +25,8 @@ class CartPage extends StatelessWidget {
 }
 
 class _CartTotal extends StatelessWidget {
-  final _cart = CartModel();
+  // final _cart = CartModel();
+  final CartModel _cart = (VxState.store as MyStore).cart;
 
   @override
   Widget build(BuildContext context) {
@@ -51,14 +53,16 @@ class _CartTotal extends StatelessWidget {
   }
 }
 
-class _CartList extends StatelessWidget
-{
-  final _cart = CartModel();
+class _CartList extends StatelessWidget {
+  // final _cart = CartModel();
+  final CartModel _cart = (VxState.store as MyStore).cart;
 
   @override
   Widget build(BuildContext context) {
     num len = _cart.items.length;
-    return len==0 ? "Nothing added to cart".text.makeCentered() : ListView.builder(
+    return len == 0
+        ? "Nothing added to cart".text.makeCentered()
+        : ListView.builder(
             itemCount: _cart.items?.length,
             itemBuilder: (context, index) => ListTile(
               leading: Icon(Icons.done),
